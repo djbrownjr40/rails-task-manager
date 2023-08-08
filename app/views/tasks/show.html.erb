@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh; flex-direction: column;">
+
+    <h1>To do: <%= @task.title %></h1>
+    <h2>Notes: <%= @task.details %></h2>
+    <%= link_to 'Update task', edit_tasks_path, class: 'btn btn-light' %>
+
+    <p class="mt-3">
+      <%= link_to 'Home', tasks_path, class: 'btn btn-light' %>
+    </p>
+
+    <p><%= link_to '🗑️',
+      task_path(@task),
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="d-flex flex-column align-items-center" style="height: 80vh;">
+
+    <h1 class="text-center mb-4">All Tasks</h1>
+
+    <div class="mb-3">
+      <%= link_to 'Add a new task', new_task_path, class: 'btn btn-primary' %>
+    </div>
+
+    <ul class="list-group text-center">
+      <% @tasks.each do |task| %>
+        <li class="list-group-item">
+            <% if task.completed? %>
+          <i class="fa-solid fa-square"></i> <%= link_to task.title, task_path(task) %>
+          <% else %>
+          <i class="fa-regular fa-square"></i> <%= link_to task.title, task_path(task) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>

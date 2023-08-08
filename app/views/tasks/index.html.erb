@@ -7,17 +7,19 @@
       <%= link_to 'Add a new task', new_task_path, class: 'btn btn-primary' %>
     </div>
 
-    <ul class="list-group text-center">
-      <% @tasks.each do |task| %>
-        <li class="list-group-item">
-            <% if task.completed? %>
-          <i class="fa-solid fa-square"></i> <%= link_to task.title, task_path(task) %>
-          <% else %>
-          <i class="fa-regular fa-square"></i> <%= link_to task.title, task_path(task) %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+  <ul class="list-group text-center">
+    <% @tasks.each do |task| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <% if task.completed? %>
+          <i class="fa-solid fa-square"></i>
+        <% else %>
+          <i class="fa-regular fa-square"></i>
+        <% end %>
+        <%= link_to task.title, task_path(task) %>
+        <%= link_to '🗑️', task_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'delete-task-link' %>
+      </li>
+    <% end %>
+  </ul>
 
   </div>
 </div>
